@@ -1,0 +1,22 @@
+from flask import Flask, 
+import random
+
+app = Flask(__name__)
+
+@app.route("/")
+def hello_world():
+    return '<h1>Informasi Ketergantungan energi</h1> <a href="/fakta">klik untuk fakta</a> <a href="/radio">klik untuk radio</a>'
+
+ketergantungan = ['main handphone tiap hari',
+                  'pesan makanan di ojol terus',
+                  'gabisa hidup tanpa hape']
+
+@app.route('/fakta')
+def fakta():
+    return f'<h2>{random.choice(ketergantungan)}</h2>'
+
+@app.route('/radio')
+def radio():
+    return "<p>Radio adalah salah satu jenis media massa satu arah yang berperan untuk menyampaikan pesan (berita, informasi dan hiburan) kepada masyarakat dengan jangkauan luas. Radio telah menjalani proses perkembangan yang cukup lama sebelum menjadi media komunikasi massa seperti saat ini</p>"
+
+app.run(debug=True)
